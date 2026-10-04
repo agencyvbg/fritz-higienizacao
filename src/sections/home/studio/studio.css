@@ -233,3 +233,10 @@
     overflow: hidden;
   }
 }
+
+@media (max-width: 767px) {
+  .studio-panels {
+    border-bottom-left-radius: 28px;
+    overflow: hidden;
+  }
+}

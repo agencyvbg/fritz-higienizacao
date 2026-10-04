@@ -349,3 +349,10 @@
     overflow: hidden;
   }
 }
+
+@media (max-width: 767px) {
+  .fritz-hero-visual {
+    border-bottom-left-radius: 28px;
+    overflow: hidden;
+  }
+}

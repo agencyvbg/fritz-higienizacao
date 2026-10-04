@@ -65,3 +65,7 @@ Usuário rejeitou ondulações. Remover curvas SVG e substituir por um único ca
 ## Harmonia das cores entre seções
 
 Manter uma família de azuis frios, com alternância por conteúdo: hero e serviços em gelo; mensagem em azul vivo; Como funciona em azul ardósia escuro; Cuidados em azul suave; introdução Sobre em gelo com fotografia escura; contato azul profundo e rodapé marinho. Texto branco e secundário azul claro nas superfícies escuras, grafite e cinza azulado nas claras. Centralizar tons em tokens e substituir aliases quentes remanescentes. Preservar animações, geometrias e conteúdo.
+
+## Cantos arredondados no celular
+
+Aplicar também no mobile os mesmos cantos assimétricos aprovados no desktop, com raio de 28px: hero/Sobre inferior esquerdo e imagens de serviços/atendimento superior direito. Preservar demais recortes e comportamento.

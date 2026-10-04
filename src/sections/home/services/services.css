@@ -180,3 +180,10 @@
     overflow: hidden;
   }
 }
+
+@media (max-width: 767px) {
+  .services-material-visual {
+    border-top-right-radius: 28px;
+    overflow: hidden;
+  }
+}
