@@ -237,15 +237,6 @@
     font-size: 10px;
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .site-footer[data-reveal='ready'] {
-    position: sticky;
-    bottom: var(--footer-reveal-bottom, 0px);
-  }
-  .site-footer[data-reveal='ready']:focus-within {
-    position: relative;
-  }
-}
 
 .footer-social-card {
   width: 300px;

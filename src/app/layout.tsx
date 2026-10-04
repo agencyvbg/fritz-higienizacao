@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { geist } from '@/styles/fonts';
 
+import { AnchorNavigation } from '@/components/ui/anchor-navigation';
 import { ScrollHeader } from '@/components/layout/header/scroll-header';
 import { Footer } from '@/components/layout/footer/footer';
 import { ConsentManager } from '@/components/analytics/consent';
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </a>
         <div id="inicio" />
 
+        <AnchorNavigation />
         <ScrollHeader />
         {children}
         <Footer />

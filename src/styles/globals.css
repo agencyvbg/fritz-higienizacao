@@ -177,3 +177,10 @@ h3 {
   z-index: 1;
   background: var(--fritz-surface);
 }
+
+/* Medir o destino real sem alterar o tamanho ou o efeito de empilhamento. */
+.measuring-anchor .environment-panel,
+.measuring-anchor .environment-card {
+  position: relative;
+  top: auto;
+}
