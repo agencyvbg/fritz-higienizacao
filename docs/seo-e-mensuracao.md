@@ -26,7 +26,7 @@ tests/unit/tracking.test.cjs    # Verificações locais, sem enviar eventos reai
 
 ## Estado atual
 
-URL oficial informada: https://higienizacaofritz.vercel.app.
+URL oficial informada: https://fritzhigienizacao.vercel.app.
 O site da Fritz mantém a indexação desativada até a revisão final. Contatos e dados do Google vêm do material original fornecido pela empresa.
 
 Metadados são renderizados pelo servidor. A imagem de compartilhamento é o JPEG fornecido pelo usuário, em 1200 × 630, mantido sem alterações em `src/assets/images/shared/social/fritz-compartilhamento.jpg`. É importado como módulo nos metadados e servido pelo próprio site com nome versionado pelo build. Open Graph e Twitter usam o mesmo arquivo. A página continua usando Geist local.

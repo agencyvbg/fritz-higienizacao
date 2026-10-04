@@ -6,7 +6,7 @@
 
 Site institucional para apresentar os serviços da Fritz em Joinville e região e facilitar a solicitação de orçamento pelo WhatsApp.
 
-[Site público](https://higienizacaofritz.vercel.app/) · [Interface](#interface) · [Executar localmente](#executar-localmente) · [Manutenção](#manutenção)
+[Site público](https://fritzhigienizacao.vercel.app/) · [Interface](#interface) · [Executar localmente](#executar-localmente) · [Manutenção](#manutenção)
 
 **Next.js 16 · React 19 · TypeScript · Framer Motion · WebP responsivo**
 
@@ -114,7 +114,7 @@ A referência está em [.env.example](.env.example). A indexação e a medição
 
 | Variável                               | Finalidade                                                            |
 | -------------------------------------- | --------------------------------------------------------------------- |
-| `SITE_URL`                             | Origem HTTPS pública. Padrão: `https://higienizacaofritz.vercel.app`. |
+| `SITE_URL`                             | Origem HTTPS pública. Padrão: `https://fritzhigienizacao.vercel.app`. |
 | `SITE_INDEXABLE`                       | Habilita indexação quando definido como `true`.                       |
 | `GOOGLE_SITE_VERIFICATION`             | Verificação de domínio no Google.                                     |
 | `META_DOMAIN_VERIFICATION`             | Verificação de domínio na Meta.                                       |
