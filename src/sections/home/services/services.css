@@ -1,20 +1,22 @@
 .services {
-  --ink: var(--fritz-ink);
-  --muted: var(--fritz-muted);
-  --copper: var(--fritz-blue);
-  --line: var(--fritz-line);
+  --paper: var(--fritz-slate);
+  --ink: #ffffff;
+  --muted: var(--fritz-on-dark);
+  --copper: #91bfff;
+  --line: #ffffff29;
+  color: var(--ink);
   border-top: 1px solid var(--line);
   background: var(--paper);
   scroll-margin-top: 20px;
 }
-.services .services-cta {
+.services .services-copy .services-cta {
   margin-top: 36px;
-  background: var(--fritz-blue);
-  color: white;
+  background: var(--fritz-surface);
+  color: var(--fritz-blue-deep);
 }
-.services .services-cta:hover {
-  background: var(--fritz-blue-deep);
-  color: white;
+.services .services-copy .services-cta:hover {
+  background: var(--fritz-soft-blue);
+  color: var(--fritz-blue-deep);
 }
 .services-copy {
   padding: 90px var(--gutter) 64px;

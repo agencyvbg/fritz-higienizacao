@@ -10,7 +10,7 @@ import {
 } from './tracking-runtime';
 import './consent.css';
 
-const storageKey = 'traco-consent-v1';
+const storageKey = 'fritz-consent-v1';
 const expiry = 180 * 24 * 60 * 60 * 1000;
 const denied: Consent = { analytics: false, marketing: false };
 
@@ -52,11 +52,11 @@ export function ConsentManager() {
         window.location.reload();
       }
     };
-    window.addEventListener('traco:privacy', show);
+    window.addEventListener('fritz:privacy', show);
     window.addEventListener('storage', sync);
     document.addEventListener('click', trackContact);
     return () => {
-      window.removeEventListener('traco:privacy', show);
+      window.removeEventListener('fritz:privacy', show);
       window.removeEventListener('storage', sync);
       document.removeEventListener('click', trackContact);
     };
@@ -154,7 +154,7 @@ export function PrivacyPreferences() {
     <button
       className="privacy-preferences"
       type="button"
-      onClick={() => window.dispatchEvent(new Event('traco:privacy'))}
+      onClick={() => window.dispatchEvent(new Event('fritz:privacy'))}
     >
       Preferências de privacidade
     </button>

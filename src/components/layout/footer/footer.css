@@ -1,5 +1,5 @@
 .site-footer {
-  --ink: #082d63;
+  --ink: var(--fritz-navy);
   --muted: #d3e1f3;
   --paper: var(--fritz-surface);
   position: relative;

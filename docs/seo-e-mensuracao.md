@@ -9,7 +9,7 @@ src/
     layout.tsx                 # Integração global
     robots.ts                  # /robots.txt
     sitemap.ts                 # /sitemap.xml
-  assets/images/shared/social/traco-compartilhamento.jpg # Arte fornecida, 1200 × 630
+  assets/images/shared/social/fritz-compartilhamento.jpg # Arte fornecida, 1200 × 630
   config/
     site.ts                    # Nome, URL, descrição e indexação
     metadata.ts                # Canonical, Open Graph, Twitter e verificações
@@ -26,10 +26,10 @@ tests/unit/tracking.test.cjs    # Verificações locais, sem enviar eventos reai
 
 ## Estado atual
 
-URL oficial informada: https://tracomoveisplanejados.vercel.app.
-O site continua conceitual, com `noindex, follow`. Isso é intencional; imagem social e anúncios não exigem indexação orgânica. Não foram adicionadas avaliações, endereço comercial, credenciais ou dados estruturados de uma empresa inexistente.
+URL oficial informada: https://higienizacaofritz.vercel.app.
+O site da Fritz mantém a indexação desativada até a revisão final. Contatos e dados do Google vêm do material original fornecido pela empresa.
 
-Metadados são renderizados pelo servidor. A imagem de compartilhamento é o JPEG fornecido pelo usuário, em 1200 × 630, mantido sem alterações em `src/assets/images/shared/social/traco-compartilhamento.jpg`. É importado como módulo nos metadados e servido pelo próprio site com nome versionado pelo build. Open Graph e Twitter usam o mesmo arquivo. A página continua usando Geist local.
+Metadados são renderizados pelo servidor. A imagem de compartilhamento é o JPEG fornecido pelo usuário, em 1200 × 630, mantido sem alterações em `src/assets/images/shared/social/fritz-compartilhamento.jpg`. É importado como módulo nos metadados e servido pelo próprio site com nome versionado pelo build. Open Graph e Twitter usam o mesmo arquivo. A página continua usando Geist local.
 
 `robots.txt` permite leitura, inclusive do noindex e dos metadados sociais. O sitemap fica vazio enquanto a indexação estiver desativada. Quando ativada, lista apenas a Home: âncoras não são páginas independentes. A página antiga de cozinhas não entra no sitemap.
 

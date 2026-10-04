@@ -27,7 +27,7 @@
 .studio-panels {
   position: relative;
   isolation: isolate;
-  background: #082d63;
+  background: var(--fritz-navy);
   color: white;
 }
 .studio-backgrounds,

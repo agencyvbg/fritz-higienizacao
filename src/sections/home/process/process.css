@@ -1,5 +1,5 @@
 .process {
-  --paper: #e4eefb;
+  --paper: var(--fritz-soft-blue);
   --ink: var(--fritz-ink);
   --muted: var(--fritz-muted);
   --copper: var(--fritz-blue);

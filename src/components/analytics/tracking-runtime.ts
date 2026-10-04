@@ -61,7 +61,7 @@ export function startTracking(consent: Consent) {
       });
     if (consent.marketing && tracking.ads) window.gtag('config', tracking.ads);
     loadScript(
-      'traco-google-tag',
+      'fritz-google-tag',
       `https://www.googletagmanager.com/gtag/js?id=${googleId}`,
     );
   }
@@ -81,7 +81,7 @@ export function startTracking(consent: Consent) {
     pixel('init', tracking.meta);
     pixel('track', 'PageView');
     loadScript(
-      'traco-meta-pixel',
+      'fritz-meta-pixel',
       'https://connect.facebook.net/en_US/fbevents.js',
     );
   }

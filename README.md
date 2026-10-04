@@ -1,98 +1,85 @@
 <div align="center">
 
-# Traço — Móveis Planejados
+# Fritz — Higienização e Impermeabilização
 
-**Seu espaço. Seu traço.**
+**Mais cuidado para o seu estofado.**
 
-Uma experiência digital inspirada na arquitetura, na luz e na materialidade dos ambientes sob medida.
+Site institucional para apresentar os serviços da Fritz em Joinville e região e facilitar a solicitação de orçamento pelo WhatsApp.
 
-[Conheça o site](https://tracomoveisplanejados.vercel.app) · [Explore a interface](#interface) · [Execute localmente](#executar-localmente) · [Documentação](#documentação)
+[Site público](https://higienizacaofritz.vercel.app/) · [Interface](#interface) · [Executar localmente](#executar-localmente) · [Manutenção](#manutenção)
 
-**Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion**
+**Next.js 16 · React 19 · TypeScript · Framer Motion · WebP responsivo**
 
 </div>
 
-![Interface desktop da Traço: composição editorial em marfim e fotografia de um dormitório com marcenaria em madeira natural](docs/readme/desktop.png)
+![Cartões de serviços da Fritz, com fotografias de higienização, fundo gelo, detalhes azuis e botões de orçamento](docs/readme/fritz-servicos.png)
 
 ## Sobre o projeto
 
-Traço é um projeto conceitual de portfólio para uma marca fictícia de móveis planejados. A Home combina direção de arte editorial, imagens com enquadramentos por dispositivo e interações que apresentam ambientes, serviços, processo e identidade do estúdio.
+A Home apresenta higienização de sofás, colchões, cadeiras e poltronas, além de impermeabilização. O conteúdo conduz o visitante dos serviços às etapas de atendimento, aos cuidados com o tecido e à apresentação da empresa.
 
-A proposta visual usa marfim, carvão e cobre, tipografia Geist local e fotografias arquitetônicas geradas por IA. As imagens representam estudos de ambiente; não são registros de obras executadas por uma empresa real.
+A identidade visual combina fundo gelo, azul Fritz, tipografia Geist local e fotografia. A navegação acompanha a rolagem; os cartões e painéis interativos mantêm o conteúdo organizado em desktop, tablet e celular.
 
-O desenvolvimento prioriza organização por seção, manutenção do conteúdo e navegação por teclado. O projeto também reúne metadados para compartilhamento e uma integração opcional de medição, condicionada às escolhas de consentimento.
+Os contatos e os dados do Google foram extraídos do material original fornecido pela Fritz. As fotos reais da empresa convivem com imagens geradas de procedimentos, identificadas na interface como ilustrativas; estas não representam atendimentos ou resultados reais.
 
 ## Interface
 
-### Ambientes e identidade visual
+### Serviços e atendimento
 
-![Seção Ambientes da Traço em desktop, com apresentação de espaços e materiais](docs/readme/ambientes.png)
-
-### Estúdio e materialidade
-
-![Seção Estúdio com painéis interativos sobre olhar, rotina, matéria e detalhes](docs/readme/estudio.png)
+- Cinco serviços com descrições e mensagens específicas para orçamento.
+- Três etapas de atendimento: envio de fotos, avaliação e agendamento.
+- Acordeão “Cada tecido pede um cuidado”, com avaliação, higienização e conservação.
+- Painéis “Sobre a Fritz”, incluindo a foto real do profissional.
+- Contato por WhatsApp e rodapé com Instagram e ações do Google.
 
 ### Navegação mobile
 
 <p align="center">
-  <img src="docs/readme/menu-mobile.png" width="320" alt="Menu mobile aberto: navegação em fundo carvão e acordeões dos cinco ambientes em painel marfim" />
+  <img src="docs/readme/fritz-menu-mobile.png" width="320" alt="Menu mobile da Fritz aberto, com fundo gelo e links para Serviços, Como funciona, Cuidados, Sobre e Contato" />
 </p>
 
-> Capturas reais da interface, registradas durante o desenvolvimento em 03/10/2026. Alguns textos e detalhes podem variar em relação ao deploy mais recente.
+### Rodapé e Google
 
-## Funcionalidades
+![Rodapé da Fritz com navegação, Instagram e card de avaliação no Google](docs/readme/fritz-footer.png)
 
-| Área             | Experiência                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------- |
-| Hero             | Carrossel de cozinha, dormitório e sala, seleção manual, arraste e controle de pausa. |
-| Ambientes        | Cozinhas, dormitórios, salas, banheiros e home office apresentados na própria Home.   |
-| Navegação        | Submenu desktop e diálogo mobile com perguntas por ambiente e links internos.         |
-| Serviços         | Apresentação visual dos serviços com conteúdo e imagens próprios da seção.            |
-| Processo         | Etapas em acordeão com navegação por teclado.                                         |
-| Estúdio          | Painéis interativos sobre a proposta da marca e os materiais.                         |
-| Contato          | CTAs de WhatsApp com mensagens contextuais, canais sociais e acesso ao topo.          |
-| Compartilhamento | Metadados Open Graph e Twitter com imagem social local.                               |
-| Medição opcional | GA4, Google Ads e Meta Pixel ativados por configuração e consentimento por categoria. |
+> Capturas locais feitas durante o desenvolvimento. Elas registram momentos da interface; detalhes podem variar conforme novas alterações. O endereço público pode exibir uma versão anterior ao código deste repositório.
+
+## Recursos
+
+| Área             | Implementação                                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------------------------- |
+| Header           | Menu com Serviços, Como funciona, Cuidados, Sobre e Contato; header horizontal após o hero.              |
+| Animação         | Revelação de texto pela rolagem, sobreposição de cartões e transições dos painéis.                       |
+| Imagens          | Recursos locais, otimização do Next.js e variantes WebP para os cinco serviços.                          |
+| Acessibilidade   | Link de salto, foco visível, estados de expansão, painéis inativos e preferência por movimento reduzido. |
+| Contato          | Links de WhatsApp com mensagem contextual e Instagram oficial.                                           |
+| Google           | Links da Fritz para avaliação e perfil; nota e quantidade centralizadas na configuração.                 |
+| SEO              | Metadados, imagem de compartilhamento, robots e sitemap.                                                 |
+| Medição opcional | GA4, Google Ads e Meta Pixel condicionados à configuração e ao consentimento.                            |
 
 ### Imagens responsivas
 
-As imagens da aplicação são importadas de `src/assets/images` e servidas pelo otimizador do Next.js. O componente `ResponsiveImage` usa `<picture>` e fontes por breakpoint para selecionar as variantes:
+Os arquivos ficam em `src/assets/images` e são importados como módulos. O componente `ResponsiveImage` seleciona a variante pelo breakpoint:
 
-| Tela                | Variante |
+| Largura             | Variante |
 | ------------------- | -------- |
 | Abaixo de 768 px    | Mobile   |
 | De 768 a 1023 px    | Tablet   |
 | A partir de 1024 px | Desktop  |
 
-Fontes e recursos visuais da interface são locais. As capturas em `docs/readme` documentam o projeto e não são carregadas pela aplicação.
-
-## Tecnologias
-
-| Tecnologia                     | Papel no projeto                                            |
-| ------------------------------ | ----------------------------------------------------------- |
-| Node.js 22 / npm 11            | Ambiente de execução e gerenciamento de dependências.       |
-| Next.js 16 / React 19          | App Router, composição da Home, renderização e metadados.   |
-| TypeScript                     | Tipagem dos componentes, conteúdo e configurações.          |
-| Tailwind CSS 4 / CSS por seção | Base de estilos, tokens e composição visual.                |
-| Framer Motion                  | Revelações e transições da interface.                       |
-| Geist variável                 | Tipografia local com arquivo WOFF2 e licença junto à fonte. |
-| Biome / Prettier               | Lint e padronização de código.                              |
-| GitHub Actions                 | Verificações automáticas em pushes e pull requests.         |
-| Vercel                         | Hospedagem escolhida para a aplicação.                      |
-
-As versões exatas estão em [package.json](package.json) e [package-lock.json](package-lock.json).
+Os cinco serviços têm 15 arquivos WebP em `src/assets/images/pages/home/fritz/servicos`: três versões por serviço. As imagens grandes usam um canto arredondado em desktop e tablet, preservando o recorte reto no celular. As capturas de `docs/readme` são documentação e não entram na interface.
 
 ## Executar localmente
 
-Use **Node.js 22.22.2** e **npm 11.15.0**, conforme `.node-version` e `package.json`. O intervalo de Node aceito pelo projeto é `>=22.22.2 <23`.
+Use **Node.js 22.22.2** e **npm 11.15.0**. O intervalo de Node aceito é `>=22.22.2 <23`.
 
 ```bash
-git clone https://github.com/agencyvbg/traco-moveis-planejados.git
-cd traco-moveis-planejados
+git clone https://github.com/agencyvbg/fritz-higienizacao.git
+cd fritz-higienizacao
 npm ci
 ```
 
-Copie `.env.example` para `.env.local`:
+Copie a configuração de referência:
 
 ```powershell
 # Windows / PowerShell
@@ -104,15 +91,17 @@ Copy-Item .env.example .env.local
 cp .env.example .env.local
 ```
 
-Inicie o desenvolvimento:
-
 ```bash
 npm run dev
 ```
 
-Acesse [localhost:3000](http://localhost:3000). Para usar outra porta, execute `npm run dev -- --port 3002`.
+Abra [localhost:3000](http://localhost:3000). Para usar a porta da revisão local:
 
-### Build de produção
+```bash
+npm run dev -- --port 3003
+```
+
+### Produção
 
 ```bash
 npm run build
@@ -121,76 +110,60 @@ npm start
 
 ## Configuração
 
-O arquivo [.env.example](.env.example) contém a configuração de referência. O estado padrão mantém a indexação e a medição desativadas.
+A referência está em [.env.example](.env.example). A indexação e a medição ficam desativadas por padrão.
 
-| Variável                               | Finalidade                                                                                            |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `SITE_URL`                             | Origem pública HTTPS, sem caminhos ou parâmetros. Padrão: `https://tracomoveisplanejados.vercel.app`. |
-| `SITE_INDEXABLE`                       | `false` no conceito de portfólio; `true` somente após aprovação para indexação.                       |
-| `GOOGLE_SITE_VERIFICATION`             | Código de verificação do domínio no Google, quando utilizado.                                         |
-| `META_DOMAIN_VERIFICATION`             | Código de verificação do domínio na Meta, quando utilizado.                                           |
-| `NEXT_PUBLIC_TRACKING_ENABLED`         | Habilita a integração de medição quando definido como `true` e houver IDs configurados.               |
-| `NEXT_PUBLIC_GA4_ID`                   | Identificador da propriedade GA4.                                                                     |
-| `NEXT_PUBLIC_GOOGLE_ADS_ID`            | Identificador da tag do Google Ads.                                                                   |
-| `NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL` | Label da conversão de clique de contato.                                                              |
-| `NEXT_PUBLIC_META_PIXEL_ID`            | Identificador do Pixel da Meta.                                                                       |
-| `NEXT_PUBLIC_PRIVACY_URL`              | URL HTTPS da política de privacidade; obrigatória com medição ativa.                                  |
+| Variável                               | Finalidade                                                            |
+| -------------------------------------- | --------------------------------------------------------------------- |
+| `SITE_URL`                             | Origem HTTPS pública. Padrão: `https://higienizacaofritz.vercel.app`. |
+| `SITE_INDEXABLE`                       | Habilita indexação quando definido como `true`.                       |
+| `GOOGLE_SITE_VERIFICATION`             | Verificação de domínio no Google.                                     |
+| `META_DOMAIN_VERIFICATION`             | Verificação de domínio na Meta.                                       |
+| `NEXT_PUBLIC_TRACKING_ENABLED`         | Ativa a integração de medição com IDs configurados.                   |
+| `NEXT_PUBLIC_GA4_ID`                   | Propriedade GA4.                                                      |
+| `NEXT_PUBLIC_GOOGLE_ADS_ID`            | Tag do Google Ads.                                                    |
+| `NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL` | Conversão de clique de contato.                                       |
+| `NEXT_PUBLIC_META_PIXEL_ID`            | Pixel da Meta.                                                        |
+| `NEXT_PUBLIC_PRIVACY_URL`              | Política de privacidade HTTPS, obrigatória com medição ativa.         |
 
-Variáveis `NEXT_PUBLIC_*` ficam expostas ao navegador. Credenciais privadas não devem usar esse prefixo nem ser adicionadas ao repositório. Alterações de configuração exigem novo build/deploy.
+Alterações de variáveis exigem novo build. Os SDKs de medição são carregados após consentimento da categoria correspondente. Um clique no WhatsApp indica intenção de contato, não comprova mensagem enviada ou venda. Consulte [SEO e mensuração](docs/seo-e-mensuracao.md).
 
-### Consentimento e eventos
+## Manutenção
 
-Estatísticas e publicidade têm escolhas independentes. Os SDKs de Google e Meta são carregados somente após autorização da categoria correspondente; as preferências podem ser revistas pelo rodapé quando a integração está habilitada.
+| O que editar                     | Arquivo ou diretório                           |
+| -------------------------------- | ---------------------------------------------- |
+| Nome, domínio e indexação        | `src/config/site.ts`                           |
+| WhatsApp e Instagram             | `src/config/contact.ts`                        |
+| Perfil Google, nota e avaliações | `src/config/google-business.ts`                |
+| Menus e links internos           | `src/config/navigation.ts`                     |
+| Metadados e compartilhamento     | `src/config/metadata.ts`                       |
+| Textos                           | Arquivos `*.content.ts` em `src/sections/home` |
+| Imagens                          | `src/assets/images` e arquivos `*.images.ts`   |
+| Cores                            | `src/styles/tokens.css`                        |
 
-O projeto registra visitas e cliques contextuais de WhatsApp. Um clique representa intenção de contato; não comprova mensagem enviada, lead qualificado ou venda. A configuração completa e as condições de ativação estão em [SEO e mensuração](docs/seo-e-mensuracao.md).
+A nota **5,0** e as **286 avaliações** são o registro do material fornecido, sem atualização automática. Revise esses valores no Google antes de alterá-los.
 
-## Organização do código
-
-Visão resumida dos diretórios utilizados pela aplicação:
+### Organização
 
 ```text
-.
-├── .github/workflows/     # Pipeline de qualidade
-├── docs/                 # Decisões, guias e evidências de validação
-├── src/
-│   ├── app/              # Home, layout, metadados, robots e sitemap
-│   ├── animations/       # Recursos compartilhados de animação
-│   ├── assets/           # Imagens, marcas e fontes locais
-│   ├── components/
-│   │   ├── analytics/    # Consentimento e execução da medição
-│   │   ├── layout/       # Header, menus e footer
-│   │   ├── media/        # Imagens responsivas
-│   │   └── ui/           # Elementos reutilizáveis
-│   ├── config/           # Site, navegação, contato e tracking
-│   ├── content/          # Conteúdo compartilhado
-│   ├── lib/              # Utilitários, incluindo foco em âncoras
-│   ├── sections/home/
-│   │   ├── hero/
-│   │   ├── environments/
-│   │   ├── services/
-│   │   ├── process/
-│   │   ├── studio/
-│   │   └── contact/
-│   └── styles/           # Estilos globais, tokens e fontes
-└── tests/unit/           # Testes de medição
+src/
+├── app/                 # Home, layout, ícones e metadados
+├── assets/              # Imagens e fontes locais
+├── components/          # Layout, UI, mídia e consentimento
+├── config/              # Site, contatos, navegação e Google
+├── lib/                 # Utilitários compartilhados
+├── sections/home/
+│   ├── hero/            # Apresentação inicial
+│   ├── environments/    # Mensagem e cartões de serviços
+│   ├── services/        # Como funciona o atendimento
+│   ├── process/         # Cuidados com o tecido
+│   ├── studio/          # Sobre a Fritz
+│   └── contact/         # Orçamento pelo WhatsApp
+└── styles/              # Tokens, fontes e estilos globais
 ```
 
-Cada seção reúne seus componentes, conteúdo, estilos e recursos exclusivos. `src/app/page.tsx` compõe a Home; elementos compartilhados ficam em `components`, `config` e `lib`. Consulte [arquitetura](docs/arquitetura.md) e [modelo de seção](docs/secao-modelo.md) para as convenções de manutenção.
+Os nomes internos `environments`, `services` e `studio` foram preservados da estrutura original; a tabela acima descreve sua função atual. As convenções estão em [arquitetura](docs/arquitetura.md) e [modelo de seção](docs/secao-modelo.md).
 
-### Onde editar
-
-| Alteração                              | Local                                                   |
-| -------------------------------------- | ------------------------------------------------------- |
-| Nome, descrição, domínio e indexação   | `src/config/site.ts`                                    |
-| Metadados e imagem de compartilhamento | `src/config/metadata.ts`                                |
-| Links de navegação e categorias        | `src/config/navigation.ts`                              |
-| WhatsApp e Instagram                   | `src/config/contact.ts`                                 |
-| Conteúdo de uma seção                  | Arquivos `*.content.ts` em `src/sections/home`          |
-| Imagens e seus registros               | `src/assets/images` e arquivos `*.images.ts` das seções |
-| Cores e tokens visuais                 | `src/styles/tokens.css`                                 |
-| Carrossel da Hero                      | `hero.slides.ts` e `use-hero-carousel.ts`               |
-
-## Qualidade e acessibilidade
+## Verificações
 
 ```bash
 npm run check
@@ -199,47 +172,28 @@ npm run build
 npm run audit
 ```
 
-`check` reúne lint, TypeScript e verificação de formatação. A CI executa instalação pelo lockfile, essas checagens, testes de medição, auditoria de dependências e build.
+`check` executa lint, TypeScript e verificação de formatação. O build e as verificações de código passaram durante a adaptação. A interface foi inspecionada no navegador em desktop e celular; esses testes não constituem certificação WCAG ou medição Lighthouse.
 
-A interface inclui link de salto para o conteúdo, foco visível, diálogo mobile nativo, estados acessíveis nos controles e tratamento de painéis fechados com `aria-hidden` e `inert`. O carrossel possui pausa e a implementação considera a preferência por movimento reduzido.
+## Publicação
 
-A [auditoria de 03/10/2026](docs/auditoria-2026-10-03.md) registrou check e build aprovados, seis testes de medição aprovados e navegação por teclado conferida. Foram inspecionadas larguras de 320, 390, 768, 1024 e 1440 px sem overflow horizontal. Esses resultados se referem à execução documentada.
-
-Ainda não foram realizados Lighthouse, certificação WCAG, testes com NVDA/JAWS/VoiceOver ou validação com pessoas cegas. A documentação registra as evidências e os limites das verificações.
-
-## Publicação na Vercel
-
-1. Conecte o repositório à Vercel e use a integração para Next.js.
-2. Configure as variáveis de `.env.example` nos ambientes apropriados.
-3. Confirme `SITE_URL` com a origem pública final, especialmente ao conectar domínio próprio.
-4. Mantenha a medição desligada nos previews e a indexação desligada enquanto o site for conceitual.
-5. Publique o código e confira navegação, imagens e metadados de compartilhamento no novo deploy.
-
-Ao transformar o conceito em um site de empresa real, revise conteúdo, imagens, contatos e política de privacidade antes de habilitar indexação ou medição. O roteiro detalhado está em [SEO, compartilhamento e anúncios](docs/seo-e-mensuracao.md).
+1. Importe o repositório `agencyvbg/fritz-higienizacao` na Vercel com o preset Next.js.
+2. Configure as variáveis para o ambiente de destino.
+3. Confirme `SITE_URL` ao usar domínio próprio.
+4. Habilite indexação após a revisão final do conteúdo público.
+5. Confira navegação, imagens, compartilhamento e destinos de contato no deploy.
 
 ## Documentação
 
-| Documento                                         | Conteúdo                                         |
-| ------------------------------------------------- | ------------------------------------------------ |
-| [Design brief](docs/design-brief.md)              | Conceito, identidade e direção visual.           |
-| [Arquitetura](docs/arquitetura.md)                | Responsabilidades e organização do código.       |
-| [Modelo de seção](docs/secao-modelo.md)           | Convenções para implementar e manter seções.     |
-| [Dependências](docs/dependencias.md)              | Escolhas e orientação de recursos locais.        |
-| [Imagens](docs/imagens.md)                        | Organização dos recursos visuais.                |
-| [Imagens geradas](docs/imagens-geradas.md)        | Origem dos estudos e implementação do carrossel. |
-| [SEO e mensuração](docs/seo-e-mensuracao.md)      | Metadados, Vercel, consentimento e eventos.      |
-| [Auditoria técnica](docs/auditoria-2026-10-03.md) | Correções, evidências e pendências verificadas.  |
+- [Direção visual e decisões da Fritz](docs/design-brief-fritz.md)
+- [Arquitetura](docs/arquitetura.md)
+- [Convenções de seção](docs/secao-modelo.md)
+- [Dependências](docs/dependencias.md)
+- [SEO e mensuração](docs/seo-e-mensuracao.md)
 
-## Autoria e uso
+Para a direção visual atual, consulte o brief da Fritz.
 
-Desenvolvido por **[VBG Agency](https://www.instagram.com/vbgagency/)** como projeto conceitual de portfólio.
+## Desenvolvimento
 
-A licença da fonte Geist está em [src/assets/fonts/geist/LICENSE](src/assets/fonts/geist/LICENSE). Este repositório não contém uma licença geral de distribuição do projeto; qualquer reutilização deve observar a autorização dos responsáveis e as licenças dos recursos envolvidos.
+Desenvolvido por **[VBG Agency](https://www.instagram.com/vbgagency/)** para **Fritz Higienização e Impermeabilização**.
 
----
-
-<div align="center">
-
-**Traço — do desenho ao espaço.**
-
-</div>
+A licença da fonte Geist está em [src/assets/fonts/geist/LICENSE](src/assets/fonts/geist/LICENSE). O repositório não declara uma licença geral de distribuição; a reutilização deve respeitar a autorização dos responsáveis e as licenças dos recursos.

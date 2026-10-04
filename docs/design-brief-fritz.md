@@ -2,7 +2,7 @@
 
 Empresa: Fritz Higienização e Impermeabilização. Região: Joinville e cidades informadas no material recebido. Fonte dos contatos, marca e fotos: ZIP fornecido pelo usuário.
 
-Escopo autorizado: adaptar header e Hero a partir da base da Traço. As demais seções serão adaptadas nas etapas seguintes; a publicação da base inteira depende dessa conclusão.
+Escopo autorizado: adaptar header e Hero a partir da base visual original. As demais seções serão adaptadas nas etapas seguintes; a publicação da base inteira depende dessa conclusão.
 
 Direção: composição editorial assimétrica, superfícies claras, azul Fritz #1769e0, grafite #30343b, margens amplas, tipografia Geist local já licenciada na base. Logo PNG original preservada e importada como módulo. Imagens locais recebidas, sem geração ou alteração do conteúdo visual.
 
@@ -40,7 +40,7 @@ Preservar estrutura, largura e comportamento da seção. Explicar envio de fotos
 
 ## Cuidados com cada tecido
 
-Preservar acordeão horizontal no desktop e vertical no celular, largura e transições. Três temas: avaliação do tecido, higienização adequada e cuidados depois do atendimento. Fundo gelo e acentos azuis. Reutilizar WebP responsivos ilustrativos de peças estofadas, sem representar resultados reais. Substituir desenho de marcenaria por sofá e remover numeração visual. Títulos devem caber no painel ativo e no celular; manter navegação por teclado e alternativa de movimento reduzido.
+Preservar acordeão horizontal no desktop e vertical no celular, largura e transições. Três temas: avaliação do tecido, higienização adequada e cuidados depois do atendimento. Fundo gelo e acentos azuis. Reutilizar WebP responsivos ilustrativos de peças estofadas, sem representar resultados reais. Substituir desenho do modelo original por sofá e remover numeração visual. Títulos devem caber no painel ativo e no celular; manter navegação por teclado e alternativa de movimento reduzido.
 
 ## Sobre a Fritz
 
@@ -61,3 +61,7 @@ Aprovado: retirar números de telefone visíveis no contato e rodapé; manter CT
 ## Revisão dos recortes
 
 Usuário rejeitou ondulações. Remover curvas SVG e substituir por um único canto arredondado nas imagens grandes a partir de 768px: inferior esquerdo no hero/Sobre e superior direito na imagem de atendimento. Manter imagens retas no celular e demais ajustes aprovados.
+
+## Harmonia das cores entre seções
+
+Manter uma família de azuis frios, com alternância por conteúdo: hero e serviços em gelo; mensagem em azul vivo; Como funciona em azul ardósia escuro; Cuidados em azul suave; introdução Sobre em gelo com fotografia escura; contato azul profundo e rodapé marinho. Texto branco e secundário azul claro nas superfícies escuras, grafite e cinza azulado nas claras. Centralizar tons em tokens e substituir aliases quentes remanescentes. Preservar animações, geometrias e conteúdo.
