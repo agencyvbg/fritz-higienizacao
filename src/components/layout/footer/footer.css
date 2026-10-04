@@ -338,3 +338,11 @@
   background: #dceaff;
   color: var(--fritz-blue-deep);
 }
+
+/* A página cobre o rodapé; foco e navegação não alteram seu posicionamento. */
+@media (prefers-reduced-motion: no-preference) {
+  .site-footer[data-reveal='ready'] {
+    position: sticky;
+    bottom: var(--footer-reveal-bottom, 0px);
+  }
+}

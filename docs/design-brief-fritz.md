@@ -81,3 +81,7 @@ Manter largura e comportamento atuais. Organizar cinco links e FAQ em uma grade 
 ## FAQ como seção com introdução sticky
 
 Usuário aprovou migrar perguntas do header para seção entre Sobre e Contato. Layout de duas colunas no desktop: introdução e CTA à esquerda acompanham o scroll com CSS sticky, abaixo do header e limitados pelo fim da seção; perguntas em cartões à direita, uma resposta por vez, com transições suaves. No celular e em telas baixas, introdução no fluxo normal. Fundo azul claro, cartões gelo/brancos e acentos Fritz. Conteúdo baseado no FAQ real do material original, sem prazos fixos ou garantias. Header e rodapé passam a ter âncora FAQ; preservar navegação suave corrigida, largura do site e grade de seis cartões do menu. Peso do título do hero: 500 (já presente no arquivo).
+
+## Restaurar revelação entre contato e rodapé
+
+Restaurar o comportamento original: rodapé sticky no fundo da viewport, abaixo do conteúdo principal, que o descobre progressivamente durante o scroll. Calcular o limite inferior considerando altura real do rodapé e header compacto, inclusive no celular com rodapé alto. Não alterar position ao receber foco: preservar o cálculo das âncoras e rolagem suave já corrigidos. Sem tradução do rodapé por Framer Motion. Para preferência de movimento reduzido, manter o rodapé no fluxo normal.
