@@ -36,7 +36,7 @@ export function AnchorNavigation() {
       }
       focusAnchor(hash);
       const instant = window.matchMedia(
-        '(max-width: 767px), (prefers-reduced-motion: reduce)',
+        '(prefers-reduced-motion: reduce)',
       ).matches;
       window.scrollTo({ top, behavior: instant ? 'instant' : 'smooth' });
       return true;
