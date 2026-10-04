@@ -1,6 +1,5 @@
 'use client';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { HeaderFaq } from './header-faq';
+import { useEffect, useRef, useState } from 'react';
 import { Brand } from './brand';
 import { DesktopNavigation } from './desktop-navigation';
 import { headerNavigation } from '@/config/navigation';
@@ -41,16 +40,13 @@ export function ScrollHeader() {
         <Brand />
         <nav className="fritz-scroll-links" aria-label="Navegação entre seções">
           {headerNavigation.map((item) => (
-            <Fragment key={item.href}>
-              {item.href === '/#contato' && <HeaderFaq />}
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => focusAnchor(item.href.slice(1))}
-              >
-                {item.label}
-              </a>
-            </Fragment>
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => focusAnchor(item.href.slice(1))}
+            >
+              {item.label}
+            </a>
           ))}
         </nav>
         <WhatsAppLink

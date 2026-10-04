@@ -77,3 +77,7 @@ Reutilizar o acordeão por serviço do modelo de móveis planejados, com respost
 ## Organização do menu compacto
 
 Manter largura e comportamento atuais. Organizar cinco links e FAQ em uma grade de seis cartões (duas colunas no desktop, uma no mobile), com cantos arredondados, miniaturas menores, setas discretas e espaçamento uniforme. Ao abrir FAQ, exibir respostas em painel abaixo da grade, ocupando a largura inteira. Fundo gelo e acentos azuis; preservar acessibilidade e rolagem apenas quando necessária.
+
+## FAQ como seção com introdução sticky
+
+Usuário aprovou migrar perguntas do header para seção entre Sobre e Contato. Layout de duas colunas no desktop: introdução e CTA à esquerda acompanham o scroll com CSS sticky, abaixo do header e limitados pelo fim da seção; perguntas em cartões à direita, uma resposta por vez, com transições suaves. No celular e em telas baixas, introdução no fluxo normal. Fundo azul claro, cartões gelo/brancos e acentos Fritz. Conteúdo baseado no FAQ real do material original, sem prazos fixos ou garantias. Header e rodapé passam a ter âncora FAQ; preservar navegação suave corrigida, largura do site e grade de seis cartões do menu. Peso do título do hero: 500 (já presente no arquivo).

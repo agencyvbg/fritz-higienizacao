@@ -35,6 +35,7 @@ export const navigation = [
   { href: '/#atendimento', label: 'Como funciona' },
   { href: '/#processo', label: 'Cuidados' },
   { href: '/#estudio', label: 'Sobre a Fritz' },
+  { href: '/#faq', label: 'FAQ' },
   { href: '/#contato', label: 'Contato' },
 ] as const;
 export const headerNavigation = [
@@ -42,5 +43,6 @@ export const headerNavigation = [
   { href: '/#atendimento', label: 'Como funciona' },
   { href: '/#processo', label: 'Cuidados' },
   { href: '/#estudio', label: 'Sobre' },
+  { href: '/#faq', label: 'FAQ' },
   { href: '/#contato', label: 'Contato' },
 ] as const;

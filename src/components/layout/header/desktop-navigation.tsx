@@ -1,5 +1,5 @@
 'use client';
-import { HeaderFaq } from './header-faq';
+import './compact-navigation.css';
 import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import { headerNavigation } from '@/config/navigation';
@@ -66,24 +66,29 @@ export function DesktopNavigation() {
               focusAnchor(item.href.slice(1));
             }}
           >
-            <Image
-              src={
-                item.href === '/#servicos' || item.href === '/#processo'
-                  ? cleaningPhoto
-                  : professionalPhoto
-              }
-              alt=""
-              width={64}
-              height={64}
-              sizes="64px"
-            />
+            {item.href === '/#faq' ? (
+              <span className="fritz-nav-faq-icon" aria-hidden="true">
+                ?
+              </span>
+            ) : (
+              <Image
+                src={
+                  item.href === '/#servicos' || item.href === '/#processo'
+                    ? cleaningPhoto
+                    : professionalPhoto
+                }
+                alt=""
+                width={64}
+                height={64}
+                sizes="64px"
+              />
+            )}
             <span>{item.label}</span>
             <span className="fritz-nav-arrow" aria-hidden="true">
               ↗
             </span>
           </a>
         ))}
-        <HeaderFaq inline />
       </nav>
     </div>
   );

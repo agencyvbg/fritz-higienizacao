@@ -1,3 +1,4 @@
+import { Faq } from '@/sections/home/faq/faq';
 import { Contact } from '@/sections/home/contact/contact';
 import { Hero } from '@/sections/home/hero/hero';
 import { Environments } from '@/sections/home/environments/environments';
@@ -12,6 +13,7 @@ export default function Home() {
       <Services />
       <Process />
       <Studio />
+      <Faq />
       <Contact />
     </main>
   );
