@@ -1,4 +1,5 @@
 'use client';
+import { HeaderFaq } from './header-faq';
 import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import { headerNavigation } from '@/config/navigation';
@@ -49,6 +50,10 @@ export function DesktopNavigation() {
         id={panelId}
         className="fritz-navigation-panel"
         aria-label="Navegação principal"
+        onClick={(event) => {
+          if (event.target instanceof Element && event.target.closest('a'))
+            setOpen(false);
+        }}
         aria-hidden={!open}
         inert={!open}
       >
@@ -73,8 +78,12 @@ export function DesktopNavigation() {
               sizes="64px"
             />
             <span>{item.label}</span>
+            <span className="fritz-nav-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         ))}
+        <HeaderFaq inline />
       </nav>
     </div>
   );

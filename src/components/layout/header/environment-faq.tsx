@@ -4,7 +4,7 @@ import { environments } from '@/config/navigation';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { Arrow } from '@/components/ui/arrow';
 import { environmentAnswers } from './environment-faq.content';
-export function EnvironmentFaq({ group }: { group: 'desktop' | 'mobile' }) {
+export function EnvironmentFaq({ group }: { group: string }) {
   const [openId, setOpenId] = useState<string | null>(null);
   return (
     <div className="environment-faq">

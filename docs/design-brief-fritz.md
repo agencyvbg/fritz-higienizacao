@@ -69,3 +69,11 @@ Manter uma família de azuis frios, com alternância por conteúdo: hero e servi
 ## Cantos arredondados no celular
 
 Aplicar também no mobile os mesmos cantos assimétricos aprovados no desktop, com raio de 28px: hero/Sobre inferior esquerdo e imagens de serviços/atendimento superior direito. Preservar demais recortes e comportamento.
+
+## Perguntas frequentes no header
+
+Reutilizar o acordeão por serviço do modelo de móveis planejados, com respostas Fritz já presentes em environment-faq.content.ts. Exibir dentro do menu do hero/mobile por botão Perguntas frequentes; no header horizontal, botão FAQ abre o mesmo conteúdo em painel. Sem seção na página ou âncora FAQ no rodapé. Fundo gelo sólido, scroll interno em telas pequenas, fechamento por Escape/clique fora e ao navegar, IDs únicos por instância, transição suave e movimento reduzido respeitado.
+
+## Organização do menu compacto
+
+Manter largura e comportamento atuais. Organizar cinco links e FAQ em uma grade de seis cartões (duas colunas no desktop, uma no mobile), com cantos arredondados, miniaturas menores, setas discretas e espaçamento uniforme. Ao abrir FAQ, exibir respostas em painel abaixo da grade, ocupando a largura inteira. Fundo gelo e acentos azuis; preservar acessibilidade e rolagem apenas quando necessária.

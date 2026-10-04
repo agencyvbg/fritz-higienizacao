@@ -1,0 +1,111 @@
+/* Menu do hero: seis cartões com o FAQ integrado à grade. */
+.fritz-navigation .fritz-navigation-panel {
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--fritz-line);
+  border-radius: 16px;
+  box-shadow: 0 16px 44px #082d631a;
+}
+.fritz-navigation .fritz-navigation-panel > a,
+.fritz-navigation
+  .fritz-navigation-panel
+  > .header-faq-inline
+  > .header-faq-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 10px;
+  border: 1px solid #dce6f1;
+  border-radius: 12px;
+  background: #e9eff6;
+  font-size: 13px;
+  text-align: left;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+.fritz-navigation .fritz-navigation-panel > a:hover,
+.fritz-navigation
+  .fritz-navigation-panel
+  > .header-faq-inline
+  > .header-faq-toggle:hover,
+.fritz-navigation
+  .fritz-navigation-panel
+  > .header-faq-inline
+  > .header-faq-toggle[aria-expanded='true'] {
+  background: #dfeafa;
+  border-color: #a1b9da;
+}
+.fritz-navigation .fritz-navigation-panel > a img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+.fritz-navigation .fritz-navigation-panel > a > span:not(.fritz-nav-arrow) {
+  flex: 1;
+}
+.fritz-nav-arrow {
+  color: var(--fritz-blue);
+  font-size: 16px;
+  margin-left: auto;
+}
+.header-faq-toggle .header-faq-caption {
+  color: var(--fritz-ink);
+  font-size: inherit;
+}
+.header-faq-inline {
+  display: contents;
+}
+.header-faq-inline .header-faq-caption {
+  flex: 1;
+}
+.header-faq-toggle .header-faq-badge {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #d7e6fa;
+  color: var(--fritz-blue-deep);
+  font-size: 25px;
+  font-weight: 500;
+}
+.header-faq-inline .header-faq-content {
+  grid-column: 1 / -1;
+  padding: 12px 20px;
+  border: 1px solid var(--fritz-line);
+  border-radius: 12px;
+  background: #f8fafc;
+}
+.fritz-navigation .fritz-navigation-panel > a:focus-visible,
+.fritz-navigation .fritz-navigation-panel .header-faq-toggle:focus-visible {
+  outline-offset: -3px;
+}
+@media (max-width: 767px) {
+  .fritz-navigation .fritz-navigation-panel {
+    padding: 12px;
+    gap: 8px;
+  }
+  .fritz-navigation .fritz-navigation-panel > a,
+  .fritz-navigation
+    .fritz-navigation-panel
+    > .header-faq-inline
+    > .header-faq-toggle {
+    min-height: 64px;
+    padding: 8px;
+  }
+  .header-faq-inline .header-faq-content {
+    padding: 8px 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fritz-navigation .fritz-navigation-panel > a,
+  .fritz-navigation
+    .fritz-navigation-panel
+    > .header-faq-inline
+    > .header-faq-toggle {
+    transition: none;
+  }
+}
