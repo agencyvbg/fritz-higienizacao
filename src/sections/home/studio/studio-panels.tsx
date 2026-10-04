@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { ResponsiveImage } from '@/components/media/responsive-image';
+
 import { studioContent } from './studio.content';
 import { studioImages } from './studio.images';
 export function StudioPanels() {
@@ -21,6 +22,7 @@ export function StudioPanels() {
             key={image.alt}
             className="studio-background"
             data-visible={visible === index}
+            data-professional={index === 0}
           >
             <ResponsiveImage
               {...image}

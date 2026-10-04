@@ -9,19 +9,19 @@ export function Process() {
       aria-labelledby="process-title"
     >
       <div className="section-heading">
-        <span className="eyebrow section-label">O processo</span>
-        <h2 id="process-title">Tudo começa com um olhar.</h2>
+        <span className="eyebrow section-label">O cuidado Fritz</span>
+        <h2 id="process-title">Cada tecido pede um cuidado.</h2>
         <p className="process-introduction">
-          Da primeira conversa aos últimos detalhes, cada escolha parte da sua
-          forma de viver.
+          Da avaliação à conservação, atenção às características da sua peça em
+          cada etapa do cuidado.
         </p>
       </div>
       <ProcessAccordion />
-      <WhatsAppLink context="as etapas do projeto, da primeira conversa à instalação">
-        Começar meu projeto
+      <WhatsAppLink context="o cuidado indicado para o meu estofado">
+        Solicitar orçamento
       </WhatsAppLink>
       <p className="process-credit">
-        Traço · Do primeiro desenho aos últimos detalhes
+        Fritz · Atenção a cada tecido. Imagens ilustrativas dos serviços.
       </p>
     </section>
   );

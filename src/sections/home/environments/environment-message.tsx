@@ -3,8 +3,10 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import type { MotionValue } from 'framer-motion';
 const message =
-  'Cada espaço tem uma história. Nosso traço começa na forma como você vive.';
-const words = message.split(' ');
+  'Seu estofado faz parte dos seus melhores momentos. Cuidar dele é cuidar do conforto de quem você ama.';
+const words = message
+  .split(' ')
+  .map((word, position) => ({ word, id: `message-word-${position}` }));
 function Word({
   word,
   index,
@@ -37,12 +39,12 @@ export function EnvironmentMessage() {
   return (
     <div ref={target} className="environment-message">
       <div className="message-sticky">
-        <span className="eyebrow">Do seu jeito de viver ao nosso traço</span>
+        <span className="eyebrow">Cuidado que faz parte da sua casa</span>
         <h2 id="environments-title" aria-label={message}>
           <span aria-hidden="true">
-            {words.map((word, index) => (
+            {words.map(({ word, id }, index) => (
               <Word
-                key={word}
+                key={id}
                 word={word}
                 index={index}
                 progress={scrollYProgress}
@@ -51,7 +53,7 @@ export function EnvironmentMessage() {
           </span>
         </h2>
         <p className="message-scroll">
-          Continue para explorar os ambientes <span aria-hidden="true">↓</span>
+          Conheça nossos serviços <span aria-hidden="true">↓</span>
         </p>
       </div>
     </div>

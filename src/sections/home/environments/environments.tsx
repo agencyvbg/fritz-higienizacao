@@ -15,9 +15,10 @@ export function Environments() {
       aria-labelledby="environments-title"
     >
       <EnvironmentMessage />
-      <div className="environment-collection-heading">
-        <span className="eyebrow section-label">Ambientes para viver</span>
-        <nav className="environment-nav" aria-label="Escolher ambiente">
+      <div className="environment-collection-heading" id="servicos">
+        <span className="eyebrow section-label">Serviços Fritz</span>
+        <h2>Cuidado para cada tipo de estofado</h2>
+        <nav className="environment-nav" aria-label="Escolher serviço">
           {environmentCollection.map((item) => (
             <a key={item.id} href={`#${item.id}`}>
               {item.label}
@@ -38,8 +39,8 @@ export function Environments() {
         ))}
       </div>
       <div className="environment-endnote">
-        <span>Cinco ambientes. Um olhar para o essencial.</span>
-        <p>Traço · Ambientes pensados para viver</p>
+        <span>Cuidado em cada tecido. Atenção em cada detalhe.</span>
+        <p>Imagens ilustrativas dos serviços.</p>
       </div>
     </section>
   );

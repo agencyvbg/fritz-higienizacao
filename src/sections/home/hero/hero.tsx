@@ -1,144 +1,96 @@
-'use client';
-import { WhatsAppLink } from '@/components/ui/whatsapp-link';
+import Image from 'next/image';
 
-import { ResponsiveImage } from '@/components/media/responsive-image';
-import { Reveal } from '@/animations/reveal';
-import { heroSlides } from './hero.slides';
-import { useHeroCarousel } from './use-hero-carousel';
+import { Header } from '@/components/layout/header/header';
+import { WhatsAppLink } from '@/components/ui/whatsapp-link';
+import { Arrow } from '@/components/ui/arrow';
+import cleaningPhoto from '@/assets/images/pages/home/fritz/higienizacao.jpg';
+import professionalPhoto from '@/assets/images/pages/home/fritz/profissional.webp';
 import { heroContent } from './hero.content';
 import './hero.css';
 export function Hero() {
-  const carousel = useHeroCarousel(heroSlides.length);
-  const current = heroSlides[carousel.active];
   return (
-    <section
-      className="hero"
-      aria-labelledby="hero-title"
-      onPointerEnter={(event) => {
-        if (event.pointerType === 'mouse') carousel.setHovered(true);
-      }}
-      onPointerLeave={(event) => {
-        if (event.pointerType === 'mouse') carousel.setHovered(false);
-      }}
-      onFocusCapture={() => carousel.setFocused(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget))
-          carousel.setFocused(false);
-      }}
-    >
-      <div className="hero-copy">
-        <span className="eyebrow">{heroContent.eyebrow}</span>
-        <h1 id="hero-title">
-          {heroContent.title.map((line) => (
-            <span key={line}>{line}</span>
-          ))}
-        </h1>
-        <p className="hero-description">{heroContent.description}</p>
-        <WhatsAppLink className="button">{heroContent.cta}</WhatsAppLink>
-        <div className="hero-index">
-          <div className="index-heading">
-            <span
-              aria-live={carousel.stopped ? 'polite' : 'off'}
-              aria-atomic="true"
-            >
-              {String(carousel.active + 1).padStart(2, '0')} — {current.label}
-            </span>
-            {!carousel.reduced && (
-              <button
-                type="button"
-                className="rotation-toggle"
-                onClick={carousel.togglePause}
-                aria-label={
-                  carousel.paused
-                    ? 'Retomar troca automática'
-                    : 'Pausar troca automática'
-                }
-              >
-                {carousel.paused ? 'Retomar' : 'Pausar'}
-              </button>
-            )}
+    <section className="hero fritz-hero" aria-labelledby="hero-title">
+      <div className="fritz-hero-layout">
+        <div className="fritz-hero-content">
+          <div className="fritz-hero-header-track">
+            <Header />
           </div>
-          <div className="slide-selectors">
-            {heroSlides.map((slide, index) => (
-              <button
-                type="button"
-                key={slide.label}
-                className="slide-selector"
-                aria-label={`Mostrar ${slide.label}`}
-                aria-pressed={carousel.active === index}
-                onClick={() => carousel.choose(index)}
-              >
-                <span className="slide-track">
-                  {carousel.active === index && (
-                    <i
-                      key={`${carousel.restart}-${carousel.stopped}`}
-                      className={
-                        carousel.stopped
-                          ? 'slide-progress is-stopped'
-                          : 'slide-progress'
-                      }
-                    />
-                  )}
+          <div className="fritz-hero-copy">
+            <div className="fritz-hero-location">
+              <span aria-hidden="true" />
+              {heroContent.location}
+            </div>
+            <p className="fritz-eyebrow">{heroContent.eyebrow}</p>
+            <h1 id="hero-title">
+              {heroContent.title.map((line) => (
+                <span className="fritz-hero-title-line" key={line}>
+                  {line}
                 </span>
-              </button>
-            ))}
+              ))}
+            </h1>
+            <div className="fritz-hero-summary">
+              <p className="fritz-hero-subtitle">{heroContent.subtitle}</p>
+              <p className="fritz-hero-description">
+                {heroContent.description}
+              </p>
+              <div className="fritz-hero-actions">
+                <WhatsAppLink
+                  className="button fritz-primary"
+                  context="higienização ou impermeabilização do meu estofado"
+                >
+                  {heroContent.cta}
+                </WhatsAppLink>
+                <a className="fritz-results-link" href="#resultados">
+                  Ver resultados <Arrow />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <figure
-        className="hero-visual carousel-visual"
-        aria-label="Ambientes planejados"
-        aria-roledescription="carrossel"
-        onPointerDown={carousel.pointerDown}
-        onPointerUp={carousel.pointerUp}
-        onPointerCancel={carousel.cancel}
-        onLostPointerCapture={carousel.cancel}
-        onDragStart={(event) => event.preventDefault()}
-      >
-        {heroSlides.map((slide, index) => (
-          <div
-            key={slide.label}
-            className={
-              carousel.active === index ? 'hero-slide is-active' : 'hero-slide'
-            }
-            aria-hidden={carousel.active !== index}
-          >
-            <ResponsiveImage
-              {...slide.images}
-              eager={index === 0}
-              onLoad={() => carousel.loaded(index)}
-            />
+        <figure className="fritz-hero-visual" id="resultados" tabIndex={-1}>
+          <Image
+            src={cleaningPhoto}
+            alt="Escovação cuidadosa do tecido de um sofá durante a higienização de estofados"
+            priority
+            sizes="(max-width: 1099px) 100vw, (min-width: 1800px) 872px, 50vw"
+            className="fritz-hero-photo"
+          />
+          <div className="fritz-photo-label" aria-hidden="true">
+            Cuidado em cada detalhe <span />
           </div>
-        ))}
-        <figcaption className="image-annotation">
-          Estudo de ambiente / {String(carousel.active + 1).padStart(2, '0')}{' '}
-          <span />
-        </figcaption>
-        <span className="image-credit">Traço · Madeira, luz e proporção</span>
-      </figure>
-      <Reveal className="hero-continuation">
-        <span className="eyebrow">A matéria como ponto de partida</span>
-        <h2>
-          Detalhes que
-          <br />
-          mudam o todo.
-        </h2>
-        <p>
-          Textura, luz e proporção.
-          <br />O essencial encontra seu lugar.
-        </p>
-        <WhatsAppLink context="materiais e acabamentos para meu projeto">
-          Escolher meus acabamentos
-        </WhatsAppLink>
-      </Reveal>
-      <div className="material-note">
-        <span className="material-swatch" aria-hidden="true" />
-        <span>
-          01 / Carvalho natural
-          <br />
-          <small>Textura e precisão</small>
+          <figcaption className="fritz-photo-caption">
+            <span>Limpeza & proteção</span>
+            <p>
+              Cada tecido.
+              <br />
+              Um cuidado próprio.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <div className="fritz-hero-introduction" id="sobre" tabIndex={-1}>
+        <div className="fritz-introduction-photo">
+          <Image
+            src={professionalPhoto}
+            alt="Profissional da Fritz aplicando produto e escovando um estofado durante atendimento"
+            width={76}
+            height={76}
+            sizes="76px"
+          />
+        </div>
+        <div>
+          <span className="fritz-eyebrow">Fritz Higienização</span>
+          <h2>Quem cuida, olha de perto.</h2>
+          <p>
+            Avaliação do tecido, atenção à peça e orientações para o cuidado
+            depois do serviço.
+          </p>
+        </div>
+        <span className="fritz-introduction-arrow" aria-hidden="true">
+          <Arrow />
         </span>
       </div>
+      <div id="fritz-header-boundary" aria-hidden="true" />
     </section>
   );
 }

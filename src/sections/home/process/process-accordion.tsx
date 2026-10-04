@@ -29,12 +29,12 @@ export function ProcessAccordion() {
           fill="none"
         >
           <path
-            d="M12 14h156v132H12zM18 20h68v72H18M92 20h70v48H92zM18 98h144v42H18zM28 110h32v20H28zM70 110h32v20H70zM112 110h38v20h-38zM2 8h176M6 0v158M174 0v158M2 152h176M106 28h46v32h-46zM25 32h54v44H25z"
+            d="M30 78V54a16 16 0 0 1 16-16h88a16 16 0 0 1 16 16v24M22 70h18v34h100V70h18v62H22V70ZM34 132v14M146 132v14M90 40v62"
             stroke="currentColor"
             strokeWidth=".8"
           />
           <path
-            d="M40 25v57M66 25v57M20 46h64M20 62h64"
+            d="M145 14v18M136 23h18M119 8v12M113 14h12"
             stroke="currentColor"
             strokeWidth=".5"
           />
@@ -68,7 +68,6 @@ export function ProcessAccordion() {
                   <span className="process-plus" aria-hidden="true">
                     {open ? '−' : '+'}
                   </span>
-                  <span className="process-step-number">0{index + 1}</span>
                   <span className="process-step-name">{step.title}</span>
                 </button>
               </h3>

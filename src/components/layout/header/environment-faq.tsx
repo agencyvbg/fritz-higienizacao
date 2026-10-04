@@ -37,12 +37,12 @@ export function EnvironmentFaq({ group }: { group: 'desktop' | 'mobile' }) {
                 <p>{environmentAnswers[item.id].answer}</p>
                 <div className="environment-faq-actions">
                   <a href={item.href}>
-                    Ver ambiente <Arrow />
+                    Ver serviço <Arrow />
                   </a>
                   <WhatsAppLink
-                    context={`móveis planejados para ${item.label.toLocaleLowerCase('pt-BR')}`}
+                    context={`serviço para ${item.label.toLocaleLowerCase('pt-BR')}`}
                   >
-                    Planejar meu espaço
+                    Solicitar orçamento
                   </WhatsAppLink>
                 </div>
               </div>

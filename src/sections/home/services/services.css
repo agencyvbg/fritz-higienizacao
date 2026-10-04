@@ -1,7 +1,20 @@
 .services {
+  --ink: var(--fritz-ink);
+  --muted: var(--fritz-muted);
+  --copper: var(--fritz-blue);
+  --line: var(--fritz-line);
   border-top: 1px solid var(--line);
   background: var(--paper);
   scroll-margin-top: 20px;
+}
+.services .services-cta {
+  margin-top: 36px;
+  background: var(--fritz-blue);
+  color: white;
+}
+.services .services-cta:hover {
+  background: var(--fritz-blue-deep);
+  color: white;
 }
 .services-copy {
   padding: 90px var(--gutter) 64px;
@@ -156,5 +169,12 @@
     top: calc(var(--header-height) + 12px);
     min-height: max(350px, 55svh);
     background: var(--paper);
+  }
+}
+
+@media (min-width: 768px) {
+  .services-material-visual {
+    border-top-right-radius: clamp(32px, 4vw, 64px);
+    overflow: hidden;
   }
 }

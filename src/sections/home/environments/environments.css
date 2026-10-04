@@ -98,7 +98,7 @@
   position: relative;
   overflow: hidden;
   height: clamp(210px, 52svh, 650px);
-  background: #ded8cc;
+  background: #e1e9f0;
 }
 .environment-photo picture,
 .environment-photo img {
@@ -118,8 +118,8 @@
   font-size: 10px;
   letter-spacing: 0.06em;
 }
-.environment-card--dormitorios .environment-photo,
-.environment-card--banheiros .environment-photo {
+.environment-card--colchoes .environment-photo,
+.environment-card--poltronas .environment-photo {
   height: clamp(190px, 44svh, 560px);
   margin-top: 8svh;
 }
@@ -155,18 +155,18 @@
   margin-top: 8px;
   max-width: 400px;
 }
-.environment-card--home-office {
+.environment-card--impermeabilizacao {
   display: grid;
   grid-template-columns: 1.65fr 1fr;
   gap: clamp(30px, 5vw, 80px);
   align-items: center;
 }
-.environment-card--home-office .environment-photo {
+.environment-card--impermeabilizacao .environment-photo {
   height: calc(100svh - var(--header-height) - 65px);
   min-height: 300px;
   max-height: 850px;
 }
-.environment-card--home-office .environment-caption {
+.environment-card--impermeabilizacao .environment-caption {
   margin: 0;
 }
 .environment-endnote {
@@ -202,7 +202,7 @@
     display: contents;
   }
   .environment-card,
-  .environment-card--home-office {
+  .environment-card--impermeabilizacao {
     display: block;
     position: sticky;
     top: var(--header-height);
@@ -213,15 +213,15 @@
     box-shadow: 0 -16px 32px #2427200a;
   }
   .environment-photo,
-  .environment-card--dormitorios .environment-photo,
-  .environment-card--banheiros .environment-photo,
-  .environment-card--home-office .environment-photo {
+  .environment-card--colchoes .environment-photo,
+  .environment-card--poltronas .environment-photo,
+  .environment-card--impermeabilizacao .environment-photo {
     height: clamp(210px, 47svh, 560px);
     min-height: 0;
     margin-top: 0;
   }
   .environment-caption,
-  .environment-card--home-office .environment-caption {
+  .environment-card--impermeabilizacao .environment-caption {
     margin-top: 12px;
   }
   .environment-description {
@@ -261,11 +261,76 @@
     min-height: 0;
   }
   .environment-photo,
-  .environment-card--dormitorios .environment-photo,
-  .environment-card--banheiros .environment-photo,
-  .environment-card--home-office .environment-photo {
+  .environment-card--colchoes .environment-photo,
+  .environment-card--poltronas .environment-photo,
+  .environment-card--impermeabilizacao .environment-photo {
     height: auto;
     aspect-ratio: 4/3;
     margin-top: 0;
+  }
+}
+
+/* Fritz message: the existing scroll reveal is preserved. */
+.environment-message {
+  background: var(--fritz-blue-deep);
+  color: white;
+}
+.environment-message .eyebrow {
+  color: #e0edff;
+}
+.environment-message .message-word {
+  color: #91b4e8;
+}
+.environment-message .message-ink {
+  color: white;
+}
+.environment-message .message-scroll {
+  color: #e0edff;
+}
+@media (prefers-reduced-motion: reduce), (max-height: 650px) {
+  .environment-message .message-word {
+    color: white;
+  }
+}
+
+.environments {
+  --ink: var(--fritz-ink);
+  --copper: var(--fritz-blue);
+  --muted: var(--fritz-muted);
+  --line: var(--fritz-line);
+}
+.environment-collection-heading {
+  scroll-margin-top: 16px;
+}
+.environment-collection-heading h2 {
+  max-width: 720px;
+  margin-top: 18px;
+  font-size: clamp(32px, 3.5vw, 54px);
+  font-weight: 450;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+.environment-card {
+  scroll-margin-top: 20px;
+}
+.environment-caption .text-link {
+  color: white;
+  background: var(--fritz-blue);
+  margin-top: 14px;
+  border-color: var(--fritz-soft-line);
+  min-height: 44px;
+}
+.environment-photo figcaption {
+  color: var(--fritz-blue-deep);
+}
+
+.environments .environment-caption .whatsapp-link:hover {
+  background: var(--fritz-blue-deep);
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .environment-photo {
+    border-top-right-radius: clamp(32px, 4vw, 64px);
   }
 }

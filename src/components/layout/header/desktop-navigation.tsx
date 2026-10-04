@@ -1,112 +1,81 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
-import { navigation } from '@/config/navigation';
-import { kitchenStudyImages } from '@/content/kitchen-study.images';
-import { EnvironmentFaq } from './environment-faq';
-import { Arrow } from '@/components/ui/arrow';
+import { headerNavigation } from '@/config/navigation';
 import { focusAnchor } from '@/lib/focus-anchor';
+import cleaningPhoto from '@/assets/images/pages/home/fritz/higienizacao.jpg';
+import professionalPhoto from '@/assets/images/pages/home/fritz/profissional.webp';
 export function DesktopNavigation() {
+  const panelId = useId();
   const [open, setOpen] = useState(false);
-  const region = useRef<HTMLDivElement>(null);
-  const trigger = useRef<HTMLButtonElement>(null);
+  const root = useRef<HTMLDivElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (!open) return;
-    function outside(event: PointerEvent) {
-      if (
-        event.target instanceof Node &&
-        !region.current?.contains(event.target)
-      )
+    function dismiss(event: PointerEvent) {
+      if (event.target instanceof Node && !root.current?.contains(event.target))
         setOpen(false);
     }
     function handleEscape(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         setOpen(false);
-        trigger.current?.focus();
+        toggle.current?.focus({ preventScroll: true });
       }
     }
-    function linkClick(event: MouseEvent) {
-      if (
-        event.target instanceof Element &&
-        event.target.closest('a') &&
-        region.current?.contains(event.target)
-      ) {
-        setOpen(false);
-        const link = event.target.closest<HTMLAnchorElement>('a');
-        if (link) {
-          const url = new URL(link.href);
-          if (
-            url.origin === location.origin &&
-            url.pathname === location.pathname &&
-            url.hash
-          )
-            requestAnimationFrame(() => focusAnchor(url.hash));
-        }
-      }
-    }
-    function focusOutside(event: FocusEvent) {
-      if (
-        event.target instanceof Node &&
-        !region.current?.contains(event.target)
-      )
-        setOpen(false);
-    }
-    document.addEventListener('click', linkClick);
-    document.addEventListener('focusin', focusOutside);
-    document.addEventListener('pointerdown', outside);
+    document.addEventListener('pointerdown', dismiss);
     document.addEventListener('keydown', handleEscape);
     return () => {
-      document.removeEventListener('click', linkClick);
-      document.removeEventListener('focusin', focusOutside);
-      document.removeEventListener('pointerdown', outside);
+      document.removeEventListener('pointerdown', dismiss);
       document.removeEventListener('keydown', handleEscape);
     };
   }, [open]);
   return (
-    <nav className="desktop-nav" aria-label="Navegação principal">
-      <div ref={region}>
-        <button
-          className="nav-trigger"
-          ref={trigger}
-          type="button"
-          aria-expanded={open}
-          aria-controls="desktop-environments"
-          onClick={() => setOpen(!open)}
-        >
-          Ambientes{' '}
-          <span className={open ? 'plus is-open' : 'plus'} aria-hidden="true">
-            +
-          </span>
-        </button>
-        <div id="desktop-environments" className="mega-menu" hidden={!open}>
-          <div className="mega-links">
-            <span className="eyebrow">Perguntas frequentes</span>
-            <EnvironmentFaq group="desktop" />
-          </div>
-          <Image
-            className="mega-image"
-            src={kitchenStudyImages.tablet}
-            alt="Estudo conceitual de cozinha em carvalho e travertino"
-            sizes="400px"
-          />
-          <div className="mega-copy">
-            <span className="eyebrow">Estudo de ambiente / 01</span>
-            <p>
-              Espaço
-              <br />
-              para viver.
-            </p>
-            <a className="text-link" href="/#cozinhas">
-              Explorar cozinhas <Arrow />
-            </a>
-          </div>
-        </div>
-      </div>
-      {navigation.map((item) => (
-        <a key={item.href} href={item.href}>
-          {item.label}
-        </a>
-      ))}
-    </nav>
+    <div ref={root} className="fritz-navigation" data-open={open}>
+      <button
+        ref={toggle}
+        className="fritz-menu-toggle"
+        type="button"
+        aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen(!open)}
+      >
+        <span className="fritz-menu-lines" aria-hidden="true">
+          <i />
+          <i />
+        </span>
+      </button>
+      <nav
+        id={panelId}
+        className="fritz-navigation-panel"
+        aria-label="Navegação principal"
+        aria-hidden={!open}
+        inert={!open}
+      >
+        {headerNavigation.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={() => {
+              setOpen(false);
+              focusAnchor(item.href.slice(1));
+            }}
+          >
+            <Image
+              src={
+                item.href === '/#servicos' || item.href === '/#processo'
+                  ? cleaningPhoto
+                  : professionalPhoto
+              }
+              alt=""
+              width={64}
+              height={64}
+              sizes="64px"
+            />
+            <span>{item.label}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
   );
 }

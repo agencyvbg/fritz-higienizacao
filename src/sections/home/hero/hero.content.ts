@@ -1,6 +1,9 @@
 export const heroContent = {
-  eyebrow: 'Móveis sob medida',
-  title: ['Seu espaço,', 'no seu', 'traço.'],
-  description: 'Entre o desenho e a matéria, um lugar que é seu.',
-  cta: 'Conversar sobre meu projeto',
+  eyebrow: 'Higienização & impermeabilização',
+  location: 'Joinville e região',
+  title: ['Mais cuidado', 'para o seu', 'estofado.'],
+  subtitle: 'Mais conforto para sua casa.',
+  description:
+    'Limpeza e proteção para sofás, colchões, cadeiras e poltronas. Cada tecido recebe a atenção que precisa.',
+  cta: 'Solicitar orçamento',
 };

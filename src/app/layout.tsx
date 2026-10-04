@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { geist } from '@/styles/fonts';
-import { Header } from '@/components/layout/header/header';
+
+import { ScrollHeader } from '@/components/layout/header/scroll-header';
 import { Footer } from '@/components/layout/footer/footer';
 import { ConsentManager } from '@/components/analytics/consent';
 import { siteMetadata } from '@/config/metadata';
@@ -17,7 +18,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Pular para o conteúdo
         </a>
         <div id="inicio" />
-        <Header />
+
+        <ScrollHeader />
         {children}
         <Footer />
         <FloatingWhatsApp />

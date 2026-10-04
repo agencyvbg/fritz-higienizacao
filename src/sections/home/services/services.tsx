@@ -1,5 +1,6 @@
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { ResponsiveImage } from '@/components/media/responsive-image';
+
 import { servicesContent } from './services.content';
 import { servicesImages } from './services.images';
 import { ServiceIcon } from './service-icon';
@@ -7,14 +8,14 @@ import './services.css';
 export function Services() {
   return (
     <section
-      id="servicos"
+      id="atendimento"
       className="services"
       aria-labelledby="services-title"
     >
       <div className="services-copy">
         <div className="services-heading">
           <div className="section-heading">
-            <span className="eyebrow section-label">Serviços</span>
+            <span className="eyebrow section-label">Como funciona</span>
             <h2 id="services-title">
               {servicesContent.title.map((line) => (
                 <span key={line}>{line}</span>
@@ -35,18 +36,23 @@ export function Services() {
               <ServiceIcon kind={item.id} />
               <h3 id={`service-${item.id}`}>{item.title}</h3>
               <p>{item.text}</p>
-              <WhatsAppLink
-                context={`o serviço de ${item.title.toLocaleLowerCase('pt-BR')}`}
-              >
-                Conversar sobre este serviço
-              </WhatsAppLink>
             </article>
           ))}
         </div>
+        <WhatsAppLink
+          className="services-cta"
+          context="higienização ou impermeabilização do meu estofado"
+        >
+          Solicitar orçamento
+        </WhatsAppLink>
       </div>
       <figure className="services-material">
-        <ResponsiveImage {...servicesImages} sizes="100vw" />
-        <figcaption>Traço · Materiais que dão forma ao seu espaço</figcaption>
+        <div className="services-material-visual">
+          <ResponsiveImage {...servicesImages} sizes="100vw" />
+        </div>
+        <figcaption>
+          Fritz · Atenção em cada detalhe. Imagem ilustrativa do serviço.
+        </figcaption>
       </figure>
     </section>
   );

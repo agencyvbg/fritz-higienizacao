@@ -9,7 +9,14 @@ export function EnvironmentCard({ item }: { item: Environment }) {
       aria-labelledby={`title-${item.id}`}
     >
       <figure className="environment-photo">
-        <ResponsiveImage {...item.images} />
+        <ResponsiveImage
+          {...item.images}
+          sizes={
+            item.id === 'impermeabilizacao'
+              ? '(min-width: 1600px) 1050px, (min-width: 768px) 60vw, 100vw'
+              : '(min-width: 1600px) 960px, (min-width: 768px) 55vw, 100vw'
+          }
+        />
         <figcaption>{item.material}</figcaption>
       </figure>
       <div className="environment-caption">
@@ -18,10 +25,8 @@ export function EnvironmentCard({ item }: { item: Environment }) {
           <h3 id={`title-${item.id}`}>{item.label}</h3>
           <p className="environment-note">{item.note}</p>
           <p className="environment-description">{item.description}</p>
-          <WhatsAppLink
-            context={`móveis planejados para ${item.label.toLocaleLowerCase('pt-BR')}`}
-          >
-            Planejar meu ambiente
+          <WhatsAppLink context={item.context}>
+            Solicitar orçamento
           </WhatsAppLink>
         </div>
       </div>

@@ -1,27 +1,27 @@
 export const environmentAnswers = {
-  cozinhas: {
-    question: 'O que considerar em uma cozinha planejada?',
+  sofas: {
+    question: 'Como é definido o cuidado com o sofá?',
     answer:
-      'A rotina de preparo, os eletrodomésticos e o que precisa ser guardado orientam o desenho. Bancadas, gavetas e circulação são pensadas em conjunto.',
+      'A avaliação do tecido e das condições da peça orienta os produtos e as técnicas de limpeza.',
   },
-  dormitorios: {
-    question: 'Como aproveitar melhor o espaço do dormitório?',
+  colchoes: {
+    question: 'Quando posso voltar a usar o colchão?',
     answer:
-      'A divisão do roupeiro parte das peças que você usa. Portas, nichos e cabeceira devem respeitar a circulação e criar um ambiente leve para descansar.',
+      'A secagem varia conforme o tecido, a ventilação e as condições do ambiente. As orientações são informadas durante o atendimento.',
   },
-  salas: {
-    question: 'A marcenaria pode integrar os ambientes?',
+  cadeiras: {
+    question: 'Quais cadeiras podem ser higienizadas?',
     answer:
-      'Painéis, estantes e módulos de apoio podem conectar estar e jantar. O projeto considera equipamentos, passagem de cabos e os objetos que fazem parte da casa.',
+      'Cadeiras estofadas são avaliadas conforme o revestimento e as condições dos assentos e encostos.',
   },
-  banheiros: {
-    question: 'Como planejar a marcenaria do banheiro?',
+  poltronas: {
+    question: 'Como é feita a avaliação da poltrona?',
     answer:
-      'O desenho considera as instalações, a ventilação e os itens da rotina. Materiais e acabamentos devem ser especificados para as condições de umidade do ambiente.',
+      'O tecido e as condições dos braços, do assento e do encosto orientam o cuidado adequado à peça.',
   },
-  'home-office': {
-    question: 'É possível criar um espaço de trabalho compacto?',
+  impermeabilizacao: {
+    question: 'A impermeabilização é indicada para todo tecido?',
     answer:
-      'Uma bancada bem dimensionada, organização de cabos e armazenamento podem integrar o trabalho à casa. Iluminação e ergonomia também entram no planejamento.',
+      'A indicação depende da avaliação do material. O tratamento ajuda a reduzir a absorção de líquidos e exige cuidados de conservação.',
   },
 } as const;

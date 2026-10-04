@@ -1,211 +1,231 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { WhatsAppLink } from '@/components/ui/whatsapp-link';
-import { EnvironmentFaq } from './environment-faq';
-import { Arrow } from '@/components/ui/arrow';
-import { navigation } from '@/config/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { headerNavigation } from '@/config/navigation';
 import { focusAnchor } from '@/lib/focus-anchor';
+import { WhatsAppLink } from '@/components/ui/whatsapp-link';
+import { Arrow } from '@/components/ui/arrow';
+import { Brand } from './brand';
 
 export function MobileNavigation() {
   const dialog = useRef<HTMLDialogElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
-  const scrollArea = useRef<HTMLDivElement>(null);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const previousOverflow = useRef('');
+  const closeButton = useRef<HTMLButtonElement>(null);
+  const previousOverflow = useRef<{ body: string; html: string } | null>(null);
   const destination = useRef('');
-  const [isOpen, setIsOpen] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-  const [current, setCurrent] = useState('');
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const phase = useRef<'closed' | 'opening' | 'closing'>('closed');
+  const [mounted, setMounted] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const close = useCallback(() => {
-    const menu = dialog.current;
-    if (!menu?.open || menu.dataset.state === 'closing') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      menu.close();
-      return;
-    }
-    menu.dataset.state = 'closing';
-    timer.current = setTimeout(() => menu.close(), 260);
-  }, []);
-
+  function unlockScroll() {
+    const previous = previousOverflow.current;
+    if (!previous) return;
+    document.body.style.overflow = previous.body;
+    document.documentElement.style.overflow = previous.html;
+    previousOverflow.current = null;
+  }
   function restore() {
-    if (timer.current) clearTimeout(timer.current);
-    document.body.style.overflow = previousOverflow.current;
-    setExpanded(false);
-    setIsOpen(false);
-    if (destination.current) {
-      focusAnchor(destination.current);
-      destination.current = '';
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+    phase.current = 'closed';
+    unlockScroll();
+    setOpen(false);
+    const hash = destination.current;
+    destination.current = '';
+    if (hash) {
+      window.location.hash = hash;
+      focusAnchor(hash);
     } else toggle.current?.focus({ preventScroll: true });
   }
-
-  function open() {
+  function openMenu() {
     const menu = dialog.current;
-    if (!menu || menu.open) return;
-    previousOverflow.current = document.body.style.overflow;
+    if (!menu || menu.open || phase.current !== 'closed') return;
+    destination.current = '';
     menu.dataset.state = 'opening';
-    menu.showModal();
-    if (scrollArea.current) scrollArea.current.scrollTop = 0;
+    // Lock the page only after the native dialog has opened.
+    try {
+      menu.showModal();
+    } catch {
+      menu.removeAttribute('data-state');
+      return;
+    }
+    phase.current = 'opening';
+    previousOverflow.current = {
+      body: document.body.style.overflow,
+      html: document.documentElement.style.overflow,
+    };
     document.body.style.overflow = 'hidden';
-    setIsOpen(true);
+    document.documentElement.style.overflow = 'hidden';
+    menu.scrollTop = 0;
+    closeButton.current?.focus({ preventScroll: true });
+    setOpen(true);
   }
-
-  useEffect(() => {
-    const query = window.matchMedia('(min-width: 1200px)');
+  function closeMenu() {
     const menu = dialog.current;
-    const handleResize = () => {
-      if (query.matches && menu?.open) menu.close();
-    };
-    const handleLink = (event: MouseEvent) => {
-      if (!(event.target instanceof Element)) return;
-      const link = event.target.closest<HTMLAnchorElement>('a');
-      if (!link) return;
-      const url = new URL(link.href);
-      if (
-        url.origin === window.location.origin &&
-        url.pathname === window.location.pathname &&
-        url.hash
-      )
-        destination.current = url.hash;
-      close();
-    };
-    const handleBackdrop = (event: MouseEvent) => {
-      if (event.target !== menu || !menu) return;
-      const rect = menu.getBoundingClientRect();
-      if (
-        event.clientX < rect.left ||
-        event.clientX > rect.right ||
-        event.clientY < rect.top ||
-        event.clientY > rect.bottom
-      )
-        close();
-    };
-    const syncHash = () =>
-      setCurrent(
-        window.location.pathname +
-          (window.location.hash ||
-            (window.location.pathname === '/' ? '#inicio' : '')),
-      );
-    syncHash();
-    window.addEventListener('hashchange', syncHash);
-    menu?.addEventListener('click', handleLink);
-    menu?.addEventListener('click', handleBackdrop);
+    if (!menu?.open || phase.current === 'closing') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      menu.close();
+      restore();
+      return;
+    }
+    phase.current = 'closing';
+    menu.dataset.state = 'closing';
+    // Complete closing even if the browser skips animationend.
+    closeTimer.current = setTimeout(() => {
+      menu.close();
+      restore();
+    }, 220);
+  }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  useEffect(() => {
+    if (!mounted) return;
+    const query = window.matchMedia('(min-width: 1100px)');
+    const menu = dialog.current;
+    function dismissImmediately() {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+      destination.current = '';
+      if (menu?.open) menu.close();
+      phase.current = 'closed';
+      const previous = previousOverflow.current;
+      if (previous) {
+        document.body.style.overflow = previous.body;
+        document.documentElement.style.overflow = previous.html;
+        previousOverflow.current = null;
+      }
+      setOpen(false);
+    }
+    function handleResize() {
+      if (query.matches) dismissImmediately();
+    }
     query.addEventListener('change', handleResize);
+    window.addEventListener('pagehide', dismissImmediately);
     return () => {
-      if (timer.current) clearTimeout(timer.current);
-      window.removeEventListener('hashchange', syncHash);
-      menu?.removeEventListener('click', handleLink);
-      menu?.removeEventListener('click', handleBackdrop);
       query.removeEventListener('change', handleResize);
-      if (menu?.open) document.body.style.overflow = previousOverflow.current;
+      window.removeEventListener('pagehide', dismissImmediately);
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+      if (menu?.open) menu.close();
+      const previous = previousOverflow.current;
+      if (previous) {
+        document.body.style.overflow = previous.body;
+        document.documentElement.style.overflow = previous.html;
+        previousOverflow.current = null;
+      }
     };
-  }, [close]);
+  }, [mounted]);
 
+  const menuPanel = (
+    <dialog
+      ref={dialog}
+      id="fritz-mobile-menu"
+      className="fritz-mobile-dialog"
+      aria-labelledby="fritz-menu-title"
+      onClose={() => {
+        if (!dialog.current?.open && phase.current !== 'closed') restore();
+      }}
+      onCancel={(event) => {
+        event.preventDefault();
+        closeMenu();
+      }}
+      onKeyDown={(event) => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeMenu();
+        }
+      }}
+      onClick={(event) => {
+        const link =
+          event.target instanceof Element
+            ? event.target.closest<HTMLAnchorElement>('a')
+            : null;
+        if (link) {
+          const url = new URL(link.href);
+          if (
+            url.origin === window.location.origin &&
+            url.pathname === window.location.pathname &&
+            url.hash
+          ) {
+            event.preventDefault();
+            destination.current = url.hash;
+          }
+          closeMenu();
+          return;
+        }
+        if (event.target !== event.currentTarget) return;
+        const rect = event.currentTarget.getBoundingClientRect();
+        if (
+          event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom
+        )
+          closeMenu();
+      }}
+    >
+      <div className="fritz-dialog-header">
+        <Brand />
+        <button
+          type="button"
+          className="fritz-menu-close"
+          aria-label="Fechar menu"
+          onClick={closeMenu}
+          ref={closeButton}
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          >
+            <path d="m6 6 12 12M6 18 18 6" />
+          </svg>
+        </button>
+      </div>
+      <h2 id="fritz-menu-title">Cuidado em cada detalhe.</h2>
+      <nav aria-label="Navegação mobile" className="fritz-mobile-links">
+        {headerNavigation.map((item) => (
+          <a key={item.href} href={item.href}>
+            <span>{item.label}</span>
+            <Arrow />
+          </a>
+        ))}
+      </nav>
+      <div className="fritz-menu-contact">
+        <p>Joinville e região</p>
+        <WhatsAppLink
+          className="button fritz-primary"
+          context="higienização ou impermeabilização do meu estofado"
+        >
+          Solicitar orçamento
+        </WhatsAppLink>
+      </div>
+    </dialog>
+  );
   return (
     <div className="mobile-nav">
       <button
         ref={toggle}
         type="button"
-        className="menu-toggle"
-        onClick={open}
+        className="fritz-menu-toggle"
         aria-label="Abrir menu"
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-        aria-controls="mobile-menu"
+        aria-expanded={open}
+        aria-controls="fritz-mobile-menu"
+        onClick={openMenu}
+        disabled={!mounted}
       >
-        <span className="menu-toggle-label">Menu</span>
-        <span className="menu-toggle-lines" aria-hidden="true">
+        <span>Menu</span>
+        <span className="fritz-menu-lines" aria-hidden="true">
           <i />
           <i />
         </span>
       </button>
-      <dialog
-        ref={dialog}
-        id="mobile-menu"
-        className="mobile-dialog"
-        onClose={restore}
-        onCancel={(event) => {
-          event.preventDefault();
-          close();
-        }}
-        aria-labelledby="mobile-menu-title"
-      >
-        <div className="mobile-dialog-shell">
-          <div className="mobile-dialog-header">
-            <a
-              href="/#inicio"
-              className="mobile-dialog-brand"
-              aria-label="Traço — início"
-            >
-              traço<span>.</span>
-            </a>
-            <button
-              className="close-menu"
-              type="button"
-              onClick={close}
-              aria-label="Fechar menu"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div className="mobile-menu-scroll" ref={scrollArea}>
-            <p id="mobile-menu-title" className="mobile-menu-eyebrow">
-              Seu espaço. Seu traço.
-            </p>
-            <nav aria-label="Navegação mobile" className="mobile-links">
-              <a
-                href="/#inicio"
-                aria-current={current === '/#inicio' ? 'location' : undefined}
-              >
-                Início <Arrow />
-              </a>
-              <button
-                type="button"
-                className="mobile-environments-trigger"
-                aria-expanded={expanded}
-                aria-controls="mobile-environments"
-                onClick={() => setExpanded((value) => !value)}
-              >
-                Ambientes{' '}
-                <span className="mobile-expand-icon" aria-hidden="true">
-                  +
-                </span>
-              </button>
-              <div
-                id="mobile-environments"
-                className="mobile-submenu"
-                data-expanded={expanded}
-                inert={!expanded}
-                aria-hidden={!expanded}
-              >
-                <div className="mobile-submenu-clip">
-                  <div className="mobile-submenu-links">
-                    <p className="mobile-faq-title">Perguntas frequentes</p>
-                    <EnvironmentFaq group="mobile" />
-                  </div>
-                </div>
-              </div>
-              {navigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  aria-current={current === item.href ? 'location' : undefined}
-                >
-                  {item.label}
-                  <Arrow />
-                </a>
-              ))}
-            </nav>
-          </div>
-          <div className="mobile-menu-contact">
-            <p>Vamos dar forma ao seu espaço?</p>
-            <WhatsAppLink className="button mobile-menu-cta">
-              Conversar sobre meu projeto
-            </WhatsAppLink>
-            <span>Móveis planejados para o seu jeito de viver.</span>
-          </div>
-        </div>
-      </dialog>
+      {mounted && createPortal(menuPanel, document.body)}
     </div>
   );
 }

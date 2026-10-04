@@ -1,5 +1,5 @@
 const configuredUrl =
-  process.env.SITE_URL || 'https://tracomoveisplanejados.vercel.app';
+  process.env.SITE_URL || 'https://higienizacaofritz.vercel.app';
 const url = new URL(configuredUrl);
 if (
   url.protocol !== 'https:' ||
@@ -15,10 +15,10 @@ if (
 }
 
 export const site = {
-  name: 'Traço Móveis Planejados',
+  name: 'Fritz Higienização e Impermeabilização',
   url: url.origin,
-  title: 'Traço — Móveis planejados | Seu espaço. Seu traço.',
+  title: 'Fritz — Higienização e impermeabilização em Joinville',
   description:
-    'Cozinhas, dormitórios, salas e outros ambientes sob medida. Conheça a Traço, um conceito de marca em móveis planejados para o seu jeito de viver.',
+    'Limpeza e proteção para sofás, colchões, cadeiras e poltronas. Higienização e impermeabilização de estofados em Joinville e região.',
   indexable: process.env.SITE_INDEXABLE === 'true',
 };

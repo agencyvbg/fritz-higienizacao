@@ -1,14 +1,14 @@
 .contact-section {
   position: relative;
-  background: var(--copper);
-  color: var(--paper);
+  background: var(--fritz-blue-deep);
+  color: white;
   padding: 90px var(--gutter) 100px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 48px;
 }
 .contact-section > .eyebrow {
-  color: var(--paper);
+  color: white;
   padding-top: 12px;
 }
 .contact-copy h2 {
@@ -32,7 +32,7 @@
   min-height: 56px;
 }
 .contact-copy .contact-button:hover {
-  background: var(--taupe);
+  background: #dceaff;
 }
 .contact-section a:focus-visible {
   outline-color: var(--paper);

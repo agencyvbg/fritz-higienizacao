@@ -1,30 +1,35 @@
 import { environments } from '@/config/navigation';
 import { environmentImages } from './environments.images';
 const details = {
-  cozinhas: {
-    material: 'Carvalho + travertino',
+  sofas: {
+    material: 'Higienização de sofás',
     description:
-      'Bancadas que aproximam. Armários que acolhem os utensílios da rotina. Cada escolha desenha um jeito de estar junto.',
+      'O cuidado começa pela avaliação do tecido. A limpeza é realizada com produtos e técnicas adequados à peça, com orientações para a secagem e os cuidados depois do serviço.',
+    context: 'higienização do meu sofá',
   },
-  dormitorios: {
-    material: 'Madeira + linho',
+  colchoes: {
+    material: 'Higienização de colchões',
     description:
-      'Volumes discretos, texturas suaves e espaço para guardar. Um ambiente que convida a desacelerar.',
+      'Limpeza do tecido do colchão com atenção ao material e às condições da peça. Você recebe orientações para a ventilação, a secagem e o retorno ao uso.',
+    context: 'higienização do meu colchão',
   },
-  salas: {
-    material: 'Textura + proporção',
+  cadeiras: {
+    material: 'Higienização de cadeiras',
     description:
-      'Livros, objetos e memórias encontram lugar em uma marcenaria que faz parte da arquitetura.',
+      'Assentos e encostos recebem um cuidado específico para o revestimento. Uma opção para cadeiras de jantar, de escritório e outras peças estofadas da sua rotina.',
+    context: 'higienização das minhas cadeiras estofadas',
   },
-  banheiros: {
-    material: 'Pedra + carvalho',
+  poltronas: {
+    material: 'Higienização de poltronas',
     description:
-      'Leveza nos volumes e cuidado nos encontros. O essencial ganha espaço entre a bancada e a madeira.',
+      'Atenção aos braços, ao assento e ao encosto, respeitando as características do tecido. Conte com uma avaliação da peça para definir o cuidado mais adequado.',
+    context: 'higienização da minha poltrona',
   },
-  'home-office': {
-    material: 'Luz + organização',
+  impermeabilizacao: {
+    material: 'Proteção para o tecido',
     description:
-      'Uma bancada na medida, o que importa por perto e luz para acompanhar as ideias. Trabalhar também pode fazer parte do morar.',
+      'Tratamento que ajuda a reduzir a absorção de líquidos pelo tecido. A aplicação depende da avaliação do material e vem acompanhada de orientações de uso e conservação.',
+    context: 'impermeabilização do meu estofado',
   },
 } as const;
 export const environmentCollection = environments.map((item) => ({

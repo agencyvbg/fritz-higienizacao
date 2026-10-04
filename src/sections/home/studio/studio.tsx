@@ -6,16 +6,16 @@ export function Studio() {
   return (
     <section className="studio" id="estudio" aria-labelledby="studio-title">
       <header className="studio-intro">
-        <span className="eyebrow section-label">Estúdio</span>
+        <span className="eyebrow section-label">Sobre a Fritz</span>
         <h2 id="studio-title">{studioContent.title}</h2>
       </header>
       <StudioPanels />
       <div className="studio-caption">
-        <WhatsAppLink context="a proposta da Traço e um projeto para meu espaço">
-          Conversar com a Traço
+        <WhatsAppLink context="higienização ou impermeabilização do meu estofado">
+          Conversar com a Fritz
         </WhatsAppLink>
-        <span>Traço · Conceito de marca em móveis planejados</span>
-        <span>Madeira, textura e cuidado em cada detalhe</span>
+        <span>Higienização &amp; Impermeabilização</span>
+        <span>Joinville e região · Consulte disponibilidade</span>
       </div>
     </section>
   );

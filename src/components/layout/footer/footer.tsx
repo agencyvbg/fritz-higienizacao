@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { InstagramIcon } from '@/components/ui/social-icons';
 import { PrivacyPreferences } from '@/components/analytics/consent';
 import vbgLogo from '@/assets/images/shared/vbg/logo.webp';
+import fritzMark from '@/assets/images/shared/fritz/fritz-mark.png';
 import { developer } from '@/config/developer';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { contact } from '@/config/contact';
@@ -17,18 +18,19 @@ export function Footer() {
           <a
             className="footer-brand"
             href="/#inicio"
-            aria-label="Traço — voltar ao início"
+            aria-label="Fritz — voltar ao início"
           >
-            traço.
+            <Image src={fritzMark} alt="" width={48} height={48} />
+            Fritz.
           </a>
           <p>
-            Espaços pensados para viver.
+            Higienização &amp; Impermeabilização.
             <br />
-            Móveis que acompanham o seu jeito de morar.
+            Mais cuidado para o seu estofado.
           </p>
         </div>
-        <nav className="footer-nav" aria-label="Ambientes no rodapé">
-          <h2>Ambientes</h2>
+        <nav className="footer-nav" aria-label="Serviços no rodapé">
+          <h2>Serviços</h2>
           {environments.map((item) => (
             <a key={item.id} href={item.href}>
               {item.label}
@@ -36,7 +38,7 @@ export function Footer() {
           ))}
         </nav>
         <nav className="footer-nav" aria-label="Navegação do rodapé">
-          <h2>Conheça a Traço</h2>
+          <h2>Conheça a Fritz</h2>
           {navigation.map((item) => (
             <a key={item.href} href={item.href}>
               {item.label}
@@ -45,34 +47,34 @@ export function Footer() {
         </nav>
         <div className="footer-contact">
           <h2>Vamos conversar</h2>
-          <WhatsAppLink context="um projeto de móveis planejados para meu espaço">
-            Falar pelo WhatsApp
+          <WhatsAppLink context="higienização ou impermeabilização do meu estofado">
+            Solicitar orçamento
           </WhatsAppLink>
-          <p>{contact.whatsappDisplay}</p>
+
           <PrivacyPreferences />
           <a
             className="footer-instagram"
             href={contact.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Traço no Instagram — abrir em nova aba"
+            aria-label="Fritz no Instagram — abrir em nova aba"
           >
-            <InstagramIcon /> Traço no Instagram{' '}
+            <InstagramIcon /> Fritz no Instagram{' '}
             <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
       <div className="footer-showcase">
         <div className="footer-wordmark" aria-hidden="true">
-          traço.
+          Fritz.
         </div>
         <GoogleProfile />
       </div>
       <div className="footer-credits">
         <p>
-          © 2026 · Traço Móveis Planejados
+          © {new Date().getFullYear()} · Fritz Higienização e Impermeabilização
           <br />
-          <span>Traço · Conceito de marca em móveis planejados</span>
+          <span>Joinville e região</span>
         </p>
         <div className="footer-developer">
           <a

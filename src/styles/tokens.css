@@ -1,5 +1,12 @@
 :root {
-  --paper: #f2efe7;
+  --fritz-blue: #1769e0;
+  --fritz-blue-deep: #1157bb;
+  --fritz-surface: #f2f6f8;
+  --fritz-ink: #30343b;
+  --fritz-muted: #596677;
+  --fritz-line: #dce2ea;
+  --fritz-soft-line: #a1b9da;
+  --paper: var(--fritz-surface);
   --taupe: #d8cec0;
   --taupe-text: #514d46;
   --copper-deep: #74452c;
